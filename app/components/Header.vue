@@ -16,7 +16,7 @@
             <NuxtLink :to="{ path: '/', hash: '#team' }" class="anchor hover:underline">Team</NuxtLink>
           </li>
           <li>
-            <NuxtLink :to="{ path: '/kontakt' }" class="anchor hover:underline bg-accent hover:bg-accent-dark hover:text-white p-2">Sag Hello</NuxtLink>
+            <NuxtLink :to="{ path: '/' }" class="anchor hover:underline bg-accent hover:bg-accent-dark hover:text-white p-2">Sag Hello</NuxtLink>
           </li>
         </ul>
 

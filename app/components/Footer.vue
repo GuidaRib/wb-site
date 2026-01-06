@@ -4,9 +4,9 @@
               <div class="text-white text-sm">© Whitebox
           2025
         </div>
-        <NuxtLink to="/impressum">Impressum</NuxtLink>
-        <NuxtLink to="/datenschutz">Datenschutz</NuxtLink>
-        <NuxtLink to="/kontakt">Kontakt</NuxtLink>
+        <NuxtLink to="/">Impressum</NuxtLink>
+        <NuxtLink to="/">Datenschutz</NuxtLink>
+        <NuxtLink to="/">Kontakt</NuxtLink>
       </div>
 
 

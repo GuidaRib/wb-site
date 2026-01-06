@@ -18,15 +18,27 @@
     <!-- Foreground / overlay panel -->
     <div
       
-        class="absolute z-10 translate-y-1/4 "
+        class="absolute z-10 translate-y-2/6 "
     >
         <div class="grid grid-cols-4 gap-5">
             <div class="">
                 
             </div>
-            <div ref="content" class="col-span-2 grid grid-cols-2 bg-white justify-between border-2 p-5 pb-10">
-                <div class="w-34 break-all text-8xl font-family-averBlack">
-                    2026
+            <div ref="content" class="col-span-2 grid grid-cols-2 bg-white justify-between border-2 p-5 ">
+                <div  class="flex justify-between flex-col ">
+                    <span class="w-34 break-all text-8xl font-family-averBlack">2026</span> 
+                    <div class="relative ">
+                        <span ref="textClp" class="text-base font-family-averRegular">CLP</span>
+                        <div ref="line2" class="border-l h-10 mb-8"></div>
+                        <img ref="smallposter1" src="/jazzahead/ja_clp.png" alt="" class="h-20">
+                        <div class="flex gap-20 absolute h-20 pr-20 bottom-0 flex-row-reverse -translate-x-full">
+                            <img ref="smallposter2" src="/jazzahead/ja_clp_big.png"  alt="">
+                            <img ref="smallposter3" src="/jazzahead/ja_beer.png" alt="">
+                            
+                        </div>
+                        
+                    </div>
+                 
                 </div>
                 <img
                     src="/jazzahead/ja_poster2026.jpg"
@@ -67,6 +79,11 @@ const background = ref<HTMLElement | null>(null);
 const content = ref<HTMLElement | null>(null);
 const line = ref<HTMLElement | null>(null);
 const posterClubnight = ref<HTMLElement | null>(null);
+const line2 = ref<HTMLElement | null>(null);
+const textClp = ref<HTMLElement | null>(null);
+const smallposter1 = ref<HTMLElement | null>(null);
+const smallposter2 = ref<HTMLElement | null>(null);
+const smallposter3 = ref<HTMLElement | null>(null); 
 
 let ctx: gsap.Context | null = null;
 
@@ -77,7 +94,11 @@ onMounted(() => {
     const fg = content.value;
     const ln = line.value;
     const pCn = posterClubnight.value;
-
+    const txt = textClp.value;
+    const ln2 = line2.value;
+    const sp1 = smallposter1.value;     
+    const sp2 = smallposter2.value;
+    const sp3 = smallposter3.value; 
 
     if (!section || !bg || !fg) return;
 
@@ -107,9 +128,13 @@ onMounted(() => {
 
        // Initial states
         tl.set(bg, { xPercent: 0, opacity: 0 });
-        tl.set(fg, { opacity: 0 });
+        tl.set(fg, { opacity: 1, scale: 0.6, y: 40 });
         tl.set(ln, { height: 0 });
         tl.set(pCn, { opacity: 0 });
+        tl.set([sp1, sp2, sp3], { opacity: 0, x: 20 });
+        tl.set(txt, { opacity: 0 });
+        tl.set(ln2, { height: 0 });
+        
 
         // Explicit durations so the scrubbed timeline maps clearly to scroll
         const fadeDur = 0.08; // bg fade duration (relative timeline units)
@@ -120,10 +145,15 @@ onMounted(() => {
         tl.to(bg, { opacity: 1, xPercent: -100,ease: 'none', duration: fadeDur }, 0);
         // 2) bg slides left after fade completes
         //tl.to(bg, { , ease: 'none', duration: slideDur }, fadeDur);
-        // 3) foreground fades in after slide completes
-        tl.to(fg, { opacity: 1,y: -40, ease: 'none', duration: fgDur }, fadeDur);
-        // 4) poster pops in shortly after foreground
-        tl.from('.poster', { opacity: 0, y: 40, duration: 0.1 }, fadeDur);
+                // 3) foreground "bounce in" after slide completes
+                // Use a fromTo so we get a bouncy entrance while preserving final y offset
+                tl.fromTo(fg,
+                    { opacity: 0, y: 40, scale: 0.6 },
+                    { opacity: 1, y: -80, scale: 1, ease: 'back.out(1.5)', duration: fgDur * 2 },
+                    fadeDur
+                );
+        // 4) poster pops in shortly after foreground 
+        tl.from('.poster', { opacity: 0, y: 40, duration: 0.1 }, fadeDur );
         // 5) text fades in
         //tl.to(txt, { opacity: 1, ease: 'none', duration: fgDur }, fadeDur * 2);
         // Split text animation
@@ -143,6 +173,17 @@ onMounted(() => {
         tl.to(ln, { height: 128, ease: 'none', duration: 0.1 }, fadeDur * 3);
         // 7) posterClubnight pops in
         tl.from(pCn, { opacity: 0, y: 40, duration: 0.1 }, fadeDur * 3);
+        // 7) line2 grows
+        tl.to(ln2, { height: 40, ease: 'none', duration: 0.1 }, fadeDur * 4);
+        // 7) textClp fades in
+        tl.to(txt, { opacity: 1,
+            ease: 'none', duration: 0.1 
+            }, fadeDur * 4);
+        
+        // 8) small posters fade in (one at a time)
+        tl.to(sp1, { opacity: 1, ease: 'ease', x: 0, duration: 0.2 }, fadeDur * 4)
+            .to(sp2, { opacity: 1, ease: 'ease', x: 0, duration: 0.2 }, '>')
+            .to(sp3, { opacity: 1, ease: 'ease', x: 0, duration: 0.2 }, '>');
 
   }, panelJazz.value);
 });
