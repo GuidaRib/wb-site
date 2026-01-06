@@ -29,11 +29,11 @@
                     <span class="w-34 break-all text-8xl font-family-averBlack">2026</span> 
                     <div class="relative ">
                         <span ref="textClp" class="text-base font-family-averRegular">CLP</span>
-                        <div ref="line2" class="border-l h-10 mb-8"></div>
-                        <img ref="smallposter1" src="/jazzahead/ja_clp.png" alt="" class="h-20">
-                        <div class="flex gap-20 absolute h-20 pr-20 bottom-0 flex-row-reverse -translate-x-full">
-                            <img ref="smallposter2" src="/jazzahead/ja_clp_big.png"  alt="">
-                            <img ref="smallposter3" src="/jazzahead/ja_beer.png" alt="">
+                        <div ref="line2" class="border-l mb-8"></div>
+                        <img ref="smallposter1" src="/jazzahead/ja_clp.png" alt="" class="h-24 smallposter">
+                        <div ref="smallposterWrap" class="flex gap-20 absolute h-24 pr-20 bottom-0 flex-row-reverse -translate-x-full">
+                            <img ref="smallposter2" src="/jazzahead/ja_clp_big.png"  alt="" class="smallposter">
+                            <img ref="smallposter3" src="/jazzahead/ja_beer.png" alt="" class="smallposter">
                             
                         </div>
                         
@@ -42,7 +42,7 @@
                 </div>
                 <img
                     src="/jazzahead/ja_poster2026.jpg"
-                    class="object-contain w-full h-full poster drop-shadow-2xl"
+                    class="object-contain w-full h-full poster shadow-lg"
                     alt="Jazzahead 2026 Poster"
                 />
             </div>
@@ -53,10 +53,10 @@
             <p><span class="font-family-averBold">Wir begleiten das Festival und die Fachmesse jazzahead! seit 2026</span> mit jählich neuem Erscheinungsbild und einem gestalterischen <span class="font-family-averBold">Rundum-Paket für sämtliche Maßnahmen der Kampagne.</span> </p>
 
             <div  class="relative z-10">
-                <div ref="line" class="border-l h-32">
+                <div ref="line" class="border-l ">
 
                 </div>
-                <img ref="posterClubnight" src="/jazzahead/ja_posterClubnight.jpg" alt="Jazzahead Poster Clubnight" class="absolute -mt-6 -ml-20 w-full h-auto max-w-40 ">
+                <img ref="posterClubnight" src="/jazzahead/ja_posterClubnight.jpg" alt="Jazzahead Poster Clubnight" class="absolute -mt-20 -ml-20 w-full h-auto max-w-40 ">
             </div>
            </div> 
         </div>
@@ -83,7 +83,8 @@ const line2 = ref<HTMLElement | null>(null);
 const textClp = ref<HTMLElement | null>(null);
 const smallposter1 = ref<HTMLElement | null>(null);
 const smallposter2 = ref<HTMLElement | null>(null);
-const smallposter3 = ref<HTMLElement | null>(null); 
+const smallposter3 = ref<HTMLElement | null>(null);
+const smallposterWrap = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context | null = null;
 
@@ -99,6 +100,7 @@ onMounted(() => {
     const sp1 = smallposter1.value;     
     const sp2 = smallposter2.value;
     const sp3 = smallposter3.value; 
+    const spWrap = smallposterWrap.value;
 
     if (!section || !bg || !fg) return;
 
@@ -126,14 +128,17 @@ onMounted(() => {
             }
         });
 
-       // Initial states
-        tl.set(bg, { xPercent: 0, opacity: 0 });
-        tl.set(fg, { opacity: 1, scale: 0.6, y: 40 });
-        tl.set(ln, { height: 0 });
-        tl.set(pCn, { opacity: 0 });
-        tl.set([sp1, sp2, sp3], { opacity: 0, x: 20 });
-        tl.set(txt, { opacity: 0 });
-        tl.set(ln2, { height: 0 });
+    // Initial states
+    tl.set(bg, { xPercent: 0, opacity: 0 });
+    // set fg to match the from state so there are no jumps
+    tl.set(fg, { opacity: 0, scale: 0.6, y: 40 });
+    tl.set(ln, { height: 0 });
+    tl.set(pCn, { opacity: 0, y: 0 });
+    // ensure wrapper starts off-screen (matches Tailwind) and posters hidden
+    if (spWrap) tl.set(spWrap, { xPercent: -100 });
+    tl.set([sp1, sp2, sp3], { autoAlpha: 0, y: 12 });
+    tl.set(txt, { opacity: 0 });
+    tl.set(ln2, { height: 0 });
         
 
         // Explicit durations so the scrubbed timeline maps clearly to scroll
@@ -149,7 +154,7 @@ onMounted(() => {
                 // Use a fromTo so we get a bouncy entrance while preserving final y offset
                 tl.fromTo(fg,
                     { opacity: 0, y: 40, scale: 0.6 },
-                    { opacity: 1, y: -80, scale: 1, ease: 'back.out(1.5)', duration: fgDur * 2 },
+                    { opacity: 1, y: -80, scale: 1, ease: 'back.out(0.8)', duration: 0.4 },
                     fadeDur
                 );
         // 4) poster pops in shortly after foreground 
@@ -162,7 +167,7 @@ onMounted(() => {
             y: 100,
             autoAlpha: 0,
             stagger: {
-                amount: 0.2,
+                amount: 0.1,
                 from: "start"
             },
             ease: "power2.out",
@@ -172,7 +177,7 @@ onMounted(() => {
         // 6) line grows
         tl.to(ln, { height: 128, ease: 'none', duration: 0.1 }, fadeDur * 3);
         // 7) posterClubnight pops in
-        tl.from(pCn, { opacity: 0, y: 40, duration: 0.1 }, fadeDur * 3);
+        tl.from(pCn, { opacity: 0, y: 0, duration: 0.1 }, fadeDur * 4);
         // 7) line2 grows
         tl.to(ln2, { height: 40, ease: 'none', duration: 0.1 }, fadeDur * 4);
         // 7) textClp fades in
@@ -180,10 +185,13 @@ onMounted(() => {
             ease: 'none', duration: 0.1 
             }, fadeDur * 4);
         
-        // 8) small posters fade in (one at a time)
-        tl.to(sp1, { opacity: 1, ease: 'ease', x: 0, duration: 0.2 }, fadeDur * 4)
-            .to(sp2, { opacity: 1, ease: 'ease', x: 0, duration: 0.2 }, '>')
-            .to(sp3, { opacity: 1, ease: 'ease', x: 0, duration: 0.2 }, '>');
+                // 8) bring wrapper in, then fade/raise posters sequentially
+                if (spWrap) {
+                    tl.to(spWrap, { xPercent: 0, ease: 'power2.out', duration: 0.35 }, fadeDur * 4);
+                }
+                tl.fromTo(sp1, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, fadeDur * 4 + 0.05)
+                    .fromTo(sp2, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, '+=0.01')
+                    .fromTo(sp3, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, '+=0.01');
 
   }, panelJazz.value);
 });
@@ -193,4 +201,8 @@ onUnmounted(() => {
   ScrollTrigger.getAll().forEach(t => t.kill());
 });
 </script>
+
+<style scoped>
+.smallposter{ will-change: transform, opacity; opacity: 0; transform: translateY(12px); }
+</style>
 

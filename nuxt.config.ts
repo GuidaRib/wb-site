@@ -5,6 +5,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [ '@nuxt/icon'],
   css: ['~/assets/css/tailwind.css'], //This is important 
+  app: {
+    head: {
+      meta: [
+        { name: 'robots', content: 'noindex, nofollow' }
+      ]
+    }
+  },
   vite: {
     plugins: [
       tailwindcss(),
