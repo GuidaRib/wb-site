@@ -1,15 +1,24 @@
 <template>
-  <header class="fixed z-[9999] w-full bg-transparent  md:my-5 p-2 ">
+  <header class="fixed z-[9999] w-full p-10">
     <nav  role="navigation" class="">
       <!-- Desktop menu -->
-      <div class="hidden md:flex gap-5 w-full justify-between px-10  py-4 mx-auto text-xl max-w-prose    color-white rounded-full backdrop-blur bg-black bg-opacity-50">
-        <NuxtLink to="/" class="anchor hover:underline">Start</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#panel2' }" class="anchor hover:underline">Über uns</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#pinnedSection' }" class="anchor hover:underline">Leistungen</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#panel4' }" class="anchor hover:underline">Projekt</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#panel5' }" class="anchor hover:underline">Team</NuxtLink>
-         <NuxtLink :to="{ path: '/svg' }" class="anchor hover:underline">SVG</NuxtLink>
-      </div>
+        <ul class="hidden md:flex justify-end items-center gap-20 ">
+          <li>
+            <NuxtLink :to="{ path: '/', hash: '#ueber-uns' }" class="anchor hover:underline">Über Uns</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink :to="{ path: '/', hash: '#projekt' }" class="anchor hover:underline">Projekt</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink :to="{ path: '/', hash: '#leistungen' }" class="anchor hover:underline">Leistungen</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink :to="{ path: '/', hash: '#team' }" class="anchor hover:underline">Team</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink :to="{ path: '/kontakt' }" class="anchor hover:underline bg-accent hover:bg-accent-dark hover:text-white p-2">Sag Hello</NuxtLink>
+          </li>
+        </ul>
 
       <!-- Mobile hamburger button -->
       <button @click="isOpen = !isOpen" class="md:hidden w-12 text-white bg-black rounded-full h-12 flex items-center justify-center absolute right-4" aria-label="Toggle menu">

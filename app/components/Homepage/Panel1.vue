@@ -4,8 +4,12 @@
     ref="sectionEl"
     class="flex items-center bg-white min-h-screen justify-center relative"
   >
-    <h1 class="text-5xl lg:text-[7rem] split self-center">whitebox</h1>
-    <div class="absolute bottom-10 animate-bounce">↓ Scroll runter</div>
+  <div class="flex flex-col items-center">
+    <h1 class="text-5xl lg:text-[7rem] font-semibold split self-center">whitebox</h1>
+    <h2 class=" text-gray-500">Strategische Marketingkommunikation</h2>
+
+  </div>
+      <div class="absolute bottom-10 animate-bounce">↓ Scroll runter</div>
   </section>
 </template>
 

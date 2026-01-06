@@ -7,13 +7,9 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 
 import Panel1 from "~/components/Homepage/Panel1.vue";
-import Panel2 from "~/components/Homepage/Panel2.vue";
-import Panel3 from "~/components/Homepage/Panel3.vue";
-import Panel6 from "~/components/Homepage/Panel6.vue";
-import PanelSVG from "~/components/Homepage/PanelSVG.vue";
-import PanelVideo from "~/components/Homepage/PanelVideo.vue";
+import Jazzahead from "~/components/Homepage/Jazzahead.vue";
 import Footer from "~/components/Footer.vue";
-import HomepagePanelMorph from "~/components/Homepage/PanelMorph.vue";
+
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, SplitText);
 
@@ -95,20 +91,16 @@ onUnmounted(() => {
 <template>
   <main ref="main" class="!overflow-hidden">
     <Panel1 />
-    <Panel2 :main="main" />
-    <Panel6 />
-    <HomepageSliderReveal variant="v"/>
-    <HomepagePanelMorph />
-    <Panel3 :main="main" />
-    <PanelVideo />
-    <PanelSVG />
+    <Jazzahead />
+
 
     <section
       id="panel5"
-      class="flex flex-col gap-20 items-center bg-yellow-200 min-h-screen justify-center"
+      class="flex flex-col gap-20 items-center  min-h-screen justify-center"
     >
       <h1 class="text-4xl">Section with vertical scroll</h1>
       <div class="box bg-purple-200 rounded-xl h-28 w-28"></div>
+      
     </section>
 
     <Footer />

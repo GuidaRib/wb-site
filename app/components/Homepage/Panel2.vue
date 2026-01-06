@@ -1,6 +1,6 @@
 <template>
-      <section id="panel2" ref="sectionEl" class="flex bg-purple-500 min-h-screen text-white items-center">
-        <div class="p-10 flex flex-col gap-10 lg:gap-20">
+            <section id="panel2" ref="sectionEl" class="relative flex bg-purple-500 min-h-screen text-white items-center">
+                <div class="p-10 flex flex-col gap-10 lg:gap-20 z-10">
             <div class="p1 text-4xl lg:text-[6rem] split font-bold ">
                 <span class="phrases cursor-pointer hover:bg-orange-400">
                 deine Marke.
@@ -14,6 +14,8 @@
                 <span class="phrases cursor-pointer hover:bg-orange-400">gemeinsam gestalten.</span>
             </div>
         </div>
+                <!-- image container: replace the background-image URL with your image file -->
+                <div class="panel2-image pointer-events-none"></div>
       </section>
 </template>
 
@@ -102,6 +104,20 @@ async function initTimeline() {
             ease: 'none',
     
         });
+
+        // slide the image container left to -50% while scrolling
+        gsap.fromTo('.panel2-image', { xPercent: 0 }, {
+            xPercent: -50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: section,
+                // start when the section top enters the bottom of the viewport
+                start: 'top bottom',
+                // end when the section bottom reaches the top of the viewport
+                end: 'bottom top',
+                scrub: true,
+            }
+        });
    
     }, section);
     /* const pinDuration = window.innerHeight * 3; // Pin for 3 viewport heights
@@ -139,5 +155,18 @@ async function initTimeline() {
 </script>
 
 <style>
+
+.panel2-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    /* Replace the URL below with your real image path (png/jpg/webp) */
+    background-image: url('/shape2-02.png');
+    will-change: transform;
+}
 
 </style>
