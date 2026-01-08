@@ -92,20 +92,8 @@ onUnmounted(() => {
 <template>
   <main ref="main" class="!overflow-hidden">
     <Panel1 />
-    <Jazzahead />
+<!--     <Jazzahead /> -->
     <WochenMarkt />
-
-
-    <section
-      id="panel5"
-      class="flex flex-col gap-20 items-center min-h-screen justify-center bg-cover bg-center"
-      :style="{ backgroundImage: 'url(/wm/gesamtes-bild.png)' }"
-    >
-      <h1 class="text-4xl">Section with vertical scroll</h1>
-      <div class="box bg-purple-200 rounded-xl h-28 w-28"></div>
-      
-    </section>
-
     <Footer />
   </main>
 </template>
