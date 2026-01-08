@@ -15,11 +15,34 @@
         />
     </div>
 
+   
+    <div ref="arrowblur"class="z-20 absolute backdrop-blur-sm   top-1/2 -translate-y-1/2  h-3/5 w-full"
+      style="mask-image: url('/jazzahead/ja_arrowbackground.svg'); 
+                   mask-size: contain; 
+                   mask-repeat: no-repeat; 
+                   mask-position: center;
+                   -webkit-mask-image: url('/jazzahead/ja_arrowbackground.svg');
+                   -webkit-mask-size: contain;
+                   -webkit-mask-repeat: no-repeat;
+                   -webkit-mask-position: center;"
+                   ></div>
     <!-- Arrow / overlay panel -->
-    <div ref="arrow" class="z-20 absolute -left-1/2 top-1/2 -translate-y-1/2  h-3/5 ">
-        <img src="/jazzahead/ja_arrow.png " alt="arrow" class="w-full h-full object-contain" />
+    <div
+        ref="arrow"
+        class="absolute z-20 top-1/2 -translate-y-1/2  h-3/5 w-full"
+        >
+        <!-- Backdrop blur div masked by SVG shape -->
+        
+    
 
-    </div>
+        <!-- Arrow image on top -->
+        <img
+            src="/jazzahead/ja_arrow.png"
+            alt="arrow"
+            class="relative w-full h-full object-contain pointer-events-none"
+        />
+        </div>
+
 
     <!-- Foreground / overlay panel -->
     <div
@@ -30,17 +53,17 @@
             <div class="">
                 
             </div>
-            <div ref="content" class="col-span-2 grid grid-cols-2 bg-white justify-between border-2 p-5 ">
+            <div ref="content" class="col-span-2 grid grid-cols-2 bg-white justify-between border-2 p-5 z-20">
                 <div  class="flex justify-between flex-col ">
                     <span ref="year" class="w-34 break-all text-8xl font-family-averBlack">2026</span> 
                     <div class="relative ">
                         <span ref="textClp" class="text-base font-family-averRegular">CLP</span>
                         <div ref="line2" class="border-l mb-8"></div>
-                        <div ref="smallposterWrap" class="z-100 h-38 overflow-visible flex flex-row-reverse gap-10">
-                            <img ref="smallposter1" class="absolute object-contain h-38 w-auto" src="/jazzahead/ja_clp.png" alt="" >
-                            <img ref="smallposter2" class="absolute object-contain h-38 w-auto" src="/jazzahead/ja_clp_big.png"  alt="" >
-                            <img ref="smallposter3" class="absolute object-contain h-38 w-auto"  src="/jazzahead/ja_beer.png" alt="" >
-                            <img ref="smallposter4" class="absolute object-contain h-38 w-auto"  src="/jazzahead/ja_programheft.png" alt="" >
+                        <div ref="smallposterWrap" class=" h-38 overflow-visible flex flex-row-reverse gap-10">
+                            <img ref="smallposter1" class="absolute object-contain h-38 w-auto z-80" src="/jazzahead/ja_clp.png" alt="" >
+                            <img ref="smallposter2" class="absolute object-contain h-38 w-auto z-80" src="/jazzahead/ja_clp_big.png"  alt="" >
+                            <img ref="smallposter3" class="absolute object-contain h-38 w-auto z-80"  src="/jazzahead/ja_beer.png" alt="" >
+                            <img ref="smallposter4" class="absolute object-contain h-38 w-auto z-80"  src="/jazzahead/ja_programheft.png" alt="" >
                         </div> 
                     </div>
                  
@@ -75,8 +98,8 @@
 
             <p><span class="font-family-averBold">Wir begleiten das Festival und die Fachmesse jazzahead! seit 2026</span> mit jählich neuem Erscheinungsbild und einem gestalterischen <span class="font-family-averBold">Rundum-Paket für sämtliche Maßnahmen der Kampagne.</span> </p>
 
-            <div class="relative z-10">
-                <div ref="line" class="border-l ">
+            <div class="relative z-40">
+                <div ref="line" class="border-l z-">
 
                 </div>
                 <img ref="posterClubnight" src="/jazzahead/ja_posterClubnight.jpg" alt="Jazzahead Poster Clubnight" class="absolute -mt-20 -ml-20 w-full h-auto max-w-40 ">
@@ -100,6 +123,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const panelJazz = ref<HTMLElement | null>(null);
 const background = ref<HTMLElement | null>(null);
 const arrow = ref<HTMLElement | null>(null);
+const arrowblur = ref<HTMLElement | null>(null);
 const content = ref<HTMLElement | null>(null);
 const posterContainer = ref<HTMLElement | null>(null);
 const year = ref<HTMLElement | null>(null);
@@ -120,6 +144,7 @@ onMounted(() => {
     const section = panelJazz.value;
     const bg = background.value;
     const arr = arrow.value;
+    const arrBlur = arrowblur.value;
     const fg = content.value;
     const yr = year.value;
     const fgContainer = posterContainer.value;
@@ -133,6 +158,7 @@ onMounted(() => {
     const sp3 = smallposter3.value;
     const sp4 = smallposter4.value;
     const spWrap = smallposterWrap.value;
+    
 
     if (!section || !bg || !fg || !posters) return;
 
@@ -176,7 +202,7 @@ onMounted(() => {
 
         // Explicit durations so the scrubbed timeline maps clearly to scroll
         const delay = 0.05; // general delay between steps (relative timeline units)
-        const fadeDur = 0.3; // bg fade duration (relative timeline units)
+        const fadeDur = 0.5; // bg fade duration (relative timeline units)
         const fgDur = 0.4;
        // foreground fade duration
 
@@ -189,17 +215,22 @@ onMounted(() => {
         tl.fromTo(fg,
             { autoAlpha: 0, y: 40, scale: 0.6 },
             { autoAlpha: 1, y: -80, scale: 1, ease: 'back.out(0.8)', duration: 0.2 },
-            fadeDur
+            0.4
         );
         tl.fromTo(arr, 
-            { autoAlpha: 0, left: '-50%' },
-            { autoAlpha: 1, left: '30%', ease: 'power2.inOut', duration: fadeDur }, 
-            0.3
-        );
+            { autoAlpha: 0, left: '-60%' },
+            { autoAlpha: 1, left: '0%', ease: 'power2.inOut', duration: fadeDur }, 
+            0.1
+        ); 
+         tl.fromTo(arrBlur, 
+            {  left: '-60%' },
+            { autoAlpha: 1, left: '0%', ease: 'power2.inOut', duration: fadeDur }, 
+            0.1
+        ); 
         tl.fromTo(fgContainer, 
             { autoAlpha: 0 },
             { autoAlpha: 1, ease: 'none', duration: fadeDur }, 
-            0.6
+            0.5
         );
         // 2) bg slides left after fade completes
  
