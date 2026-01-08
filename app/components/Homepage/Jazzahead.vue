@@ -46,28 +46,28 @@
                     </div>
                  
                 </div>
-                <div class="relative col-span-1  w-full h-[70vh]">
-                <img
-                    src="/jazzahead/ja22-poster.jpg"
-                    class="absolute object-contain w-full h-full poster shadow-lg "
-                    alt="Jazzahead 2026 Poster"
-                />
-                <img
-                    src="/jazzahead/ja23-poster.jpg"
-                    class="absolute object-contain w-full h-full poster shadow-lg "
-                    alt="Jazzahead 2026 Poster"
-                />
-                <img src="/jazzahead/ja24-poster.jpg" alt="Jazzahead 2025 Poster" class="absolute object-contain w-full h-full poster shadow-lg"/>
-                 <img
-                    src="/jazzahead/ja25-poster.jpg"
-                    class="absolute object-contain w-full h-full poster shadow-lg "
-                    alt="Jazzahead 2026 Poster"
-                />
-                <img
-                    src="/jazzahead/ja_poster2026.jpg"
-                    class="absolute object-contain w-full h-full poster shadow-lg "
-                    alt="Jazzahead 2026 Poster"
-                />
+                <div ref="posterContainer" class="relative col-span-1  w-full h-[70vh]">
+                    <img
+                        src="/jazzahead/ja22-poster.jpg"
+                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        alt="Jazzahead 2026 Poster"
+                    />
+                    <img
+                        src="/jazzahead/ja23-poster.jpg"
+                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        alt="Jazzahead 2026 Poster"
+                    />
+                    <img src="/jazzahead/ja24-poster.jpg" alt="Jazzahead 2025 Poster" class="absolute object-contain w-full h-full poster shadow-lg"/>
+                    <img
+                        src="/jazzahead/ja25-poster.jpg"
+                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        alt="Jazzahead 2026 Poster"
+                    />
+                    <img
+                        src="/jazzahead/ja_poster2026.jpg"
+                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        alt="Jazzahead 2026 Poster"
+                    />
                 </div>
             </div>
         <div ref="text" class="text text-base max-w-72 font-family-averRegular">
@@ -102,15 +102,17 @@ const panelJazz = ref<HTMLElement | null>(null);
 const background = ref<HTMLElement | null>(null);
 const arrow = ref<HTMLElement | null>(null);
 const content = ref<HTMLElement | null>(null);
-const line = ref<HTMLElement | null>(null);
+const posterContainer = ref<HTMLElement | null>(null);
+const year = ref<HTMLElement | null>(null);
+ const line = ref<HTMLElement | null>(null);
 const posterClubnight = ref<HTMLElement | null>(null);
 const line2 = ref<HTMLElement | null>(null);
 const textClp = ref<HTMLElement | null>(null);
-const smallposter1 = ref<HTMLElement | null>(null);
+/*const smallposter1 = ref<HTMLElement | null>(null);
 const smallposter2 = ref<HTMLElement | null>(null);
 const smallposter3 = ref<HTMLElement | null>(null);
-const year = ref<HTMLElement | null>(null);
-const smallposterWrap = ref<HTMLElement | null>(null);
+
+const smallposterWrap = ref<HTMLElement | null>(null); */
 
 let ctx: gsap.Context | null = null;
 
@@ -120,17 +122,20 @@ onMounted(() => {
     const bg = background.value;
     const arr = arrow.value;
     const fg = content.value;
+    const yr = year.value;
+    const fgContainer = posterContainer.value;
+    const posters = gsap.utils.toArray('.poster') as HTMLElement[] | undefined;
     const ln = line.value;
     const pCn = posterClubnight.value;
     const txt = textClp.value;
-    const ln2 = line2.value;
+   /*   const ln2 = line2.value;
     const sp1 = smallposter1.value;     
     const sp2 = smallposter2.value;
     const sp3 = smallposter3.value; 
     const spWrap = smallposterWrap.value;
-    const yr = year.value;
+    */
 
-    if (!section || !bg || !fg) return;
+    if (!section || !bg || !fg || !posters) return;
 
         // Pin the section for 4 viewport heights
         const pinDuration = window.innerHeight * 4;
@@ -154,46 +159,62 @@ onMounted(() => {
         });
 
     // Initial states
-    tl.set(bg, { xPercent: 0, opacity: 0 });
-    tl.set(arr, { xPercent: -100 });
-    // set fg to match the from state so there are no jumps
-    tl.set(fg, { opacity: 0, scale: 0.6, y: 40 });
+    // bg, arr, fg, and fgContainer use fromTo for reliable control
+    tl.set(fg, { autoAlpha: 0, scale: 0.6, y: 40 });
+    tl.set(fgContainer, { autoAlpha: 0 });
+    tl.set(posters, { autoAlpha: 1, y: 0 });
+    tl.set(txt, { autoAlpha: 0 });
+  
     tl.set(ln, { height: 0 });
-    tl.set(pCn, { opacity: 0, y: 0 });
+    tl.set(pCn, { autoAlpha: 0, y: 0 });
     // ensure wrapper starts off-screen (matches Tailwind) and posters hidden
-    if (spWrap) tl.set(spWrap, { xPercent: -100 });
+    /*if (spWrap) tl.set(spWrap, { xPercent: -100 });
     tl.set([sp1, sp2, sp3], { autoAlpha: 0, y: 12 });
-    tl.set(txt, { opacity: 0 });
     tl.set(ln2, { height: 0 });
-        
+         */
 
         // Explicit durations so the scrubbed timeline maps clearly to scroll
-        const fadeDur = 0.08; // bg fade duration (relative timeline units)
-        const slideDur = 0.13; // bg slide duration
-        const fgDur = 0.05;   // foreground fade duration
+        const delay = 0.05; // general delay between steps (relative timeline units)
+        const fadeDur = 0.3; // bg fade duration (relative timeline units)
+        const fgDur = 0.4;
+       // foreground fade duration
 
-        // 1) bg fades in
-        tl.to(bg, { opacity: 1, xPercent: -100,ease: 'none', duration: fadeDur }, 0);
-        tl.to(arr, {  xPercent: 120 ,ease: 'power2.inOut', duration: 0.2 }, fadeDur);
+        // 1) bg fades in and slides
+        tl.fromTo(bg, 
+            { autoAlpha: 0, xPercent: 0 },
+            { autoAlpha: 1, xPercent: -100, ease: 'none', duration: fadeDur }, 
+            0
+        );
+        tl.fromTo(fg,
+            { autoAlpha: 0, y: 40, scale: 0.6 },
+            { autoAlpha: 1, y: -80, scale: 1, ease: 'back.out(0.8)', duration: 0.2 },
+            fadeDur
+        );
+        tl.fromTo(arr, 
+            { autoAlpha: 0, xPercent: -100 },
+            { autoAlpha: 1, xPercent: 100, ease: 'power2.inOut', duration: fadeDur }, 
+            0.3
+        );
+        tl.fromTo(fgContainer, 
+            { autoAlpha: 0 },
+            { autoAlpha: 1, ease: 'none', duration: fadeDur }, 
+            0.6
+        );
         // 2) bg slides left after fade completes
-        //tl.to(bg, { , ease: 'none', duration: slideDur }, fadeDur);
+ 
             // 3) foreground "bounce in" after slide completes
             // Use a fromTo so we get a bouncy entrance while preserving final y offset
-            tl.fromTo(fg,
-                { opacity: 0, y: 40, scale: 0.6 },
-                { opacity: 1, y: -80, scale: 1, ease: 'back.out(0.8)', duration: 0.4 },
-                fadeDur
-            );
-            // 4) big posters: sequential fade-in / fade-out and update year
-            const posters = gsap.utils.toArray('.poster') as HTMLElement[] | undefined;
-            if (!posters) return;
+
+           // 4) big posters: sequential fade-in / fade-out and update year
+
+        
                 // DOM order is 22,23,24,25,26 (26 is top). Reverse so we animate top->bottom.
                 const rev = posters.slice().reverse();
                 // make sure all posters are visible and stacked before we start fading the top ones
-                tl.set(posters, { autoAlpha: 1, y: 0 });
+         
                 const posterYears = ['2026','2025','2024','2023','2022'];
                 // start the poster/year sequence later in the timeline
-                const posterSeqStart = fadeDur * 8;
+                const posterSeqStart = 0.8;
                 // fade out the top poster first (26), then update the year to the next value beneath it
                 // ensure initial year shown
                 if (yr) yr.textContent = posterYears[0];
@@ -203,6 +224,7 @@ onMounted(() => {
                     if (i < rev.length - 1) {
                         const stepLabel = `step${i}`;
                         postersTL.addLabel(stepLabel);
+                        
                         // fade out the top poster over 0.6s (reveals the one beneath)
                         postersTL.to(p, { autoAlpha: 0, ease: 'power2.inOut', duration: 0.6 }, stepLabel);
                     }
@@ -223,9 +245,13 @@ onMounted(() => {
                 tl.add(postersTL, posterSeqStart);
 
         // 5) text fades in
-        //tl.to(txt, { opacity: 1, ease: 'none', duration: fgDur }, fadeDur * 2);
+        tl.fromTo(txt, 
+            { autoAlpha: 0 },
+            { autoAlpha: 1, ease: 'none', duration: fgDur }, 
+            0.4
+        );
         // Split text animation
-     
+       
          tl.from(split.words, {
             y: 100,
             autoAlpha: 0,
@@ -235,14 +261,18 @@ onMounted(() => {
             },
             ease: "power2.out",
             duration: 0.08,
-            }, fadeDur * 5);
+            }, 0.5);
 
         // 6) line grows
-        tl.to(ln, { height: 128, ease: 'none', duration: 0.1 }, fadeDur * 5);
+        tl.to(ln, { height: 128, ease: 'none', duration: 0.1 }, 0.7);
         // 7) posterClubnight pops in
-        tl.from(pCn, { opacity: 0, y: 0, duration: 0.1 }, fadeDur * 5);
+        tl.fromTo(pCn, 
+            { autoAlpha: 0, y: 0 },
+            { autoAlpha: 1, y: 0, duration: 0.1 }, 
+            0.8
+        );
         // 7) line2 grows
-        tl.to(ln2, { height: 40, ease: 'none', duration: 0.1 }, fadeDur * 5);
+        /*  tl.to(ln2, { height: 40, ease: 'none', duration: 0.1 }, fadeDur * 5);
         // 7) textClp fades in
         tl.to(txt, { opacity: 1,
             ease: 'none', duration: 0.1 
@@ -255,7 +285,7 @@ onMounted(() => {
                 // Sequence: show small posters (visual accents) — do not change the main year here
                 tl.fromTo(sp1, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, fadeDur * 4 + 0.05)
                     .fromTo(sp2, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, '+=0.06')
-                    .fromTo(sp3, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, '+=0.06');
+                    .fromTo(sp3, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, '+=0.06'); */
 
     }, panelJazz.value);
 });
@@ -267,6 +297,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.smallposter{ will-change: transform, opacity; opacity: 0; transform: translateY(12px); }
+/* Initial states now managed by GSAP for reliability */
 </style>
 
