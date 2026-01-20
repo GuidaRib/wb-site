@@ -20,11 +20,11 @@
     </div>
     <div ref="mainContent" class="overflow-hidden col-span-5 col-start-2 flex flex-col justify-center items-center relative z-10 border-t-2 border-b-2 border-white">
         <div class="relative overflow-hidden "> 
-            <img src="/boecker/bo_laptop_nn.png" alt="" class="relative z-20  h-auto w-[62vw] mx-auto object-contain border-t-2 border-b-2 border-white">
+            <img src="/boecker/bo_laptop_nn.png" alt="" class="relative z-20  h-auto w-[62vw] mx-auto object-contain max-h-[80vh] ">
 
-            <img ref="website" src="/boecker/bo_website.jpg" class="w-[48.3vw] h-auto absolute left-1/2 top-20 -ml-2 transform -translate-x-1/2 z-10" alt=""> 
+            <img ref="website" src="/boecker/bo_website.jpg" class="w-[48.3vw] h-auto absolute left-1/2 top-20 -ml-2 transform -translate-x-1/2 z-10 border-t-2 border-b-2 border-white " alt=""> 
             
-            <div ref="logo" class="w-[48.3vw]  absolute left-1/2 top-23 transform -translate-x-1/2 z-10 bg-white flex items-center justify-center"> 
+            <div ref="logo" class="w-[48.3vw]  absolute left-1/2 top-23 transform -translate-x-1/2 z-10  flex items-center justify-center"> 
                 <img src="/boecker/bo_logo_n.png" class="object-contain" alt="">
             </div>
 
@@ -40,7 +40,7 @@
                         
         </div>
         <div ref="line" class="border-l"></div>
-        <div class="h-20 w-full">
+        <div class="h-20 w-full flex flex-col gap-4">
             <span ref="textClp" class="text-base font-family-averRegular min-w-2 h-6">BÖCKER Social Media B2C und B2B</span>
             <div ref="line2" class="border-l h-10"></div>
         </div>
@@ -178,7 +178,7 @@ ctx = gsap.context(() => {
     }, 0.6);
 
     // 6) line grows
-    tl.to(textLine, { height: 80, ease: 'none', duration: 0.1 }, 0.7);
+    tl.to(textLine, { height: 60, ease: 'none', duration: 0.1 }, 0.7);
 
     tl.fromTo(leftEl,
         { x: -100, opacity: 0 },
@@ -202,8 +202,8 @@ ctx = gsap.context(() => {
     // Reverse graphicsEl after a few seconds
     tl.fromTo(graphicsEl, 
     { x: -500, autoAlpha: 1 },
-        { x: -0, autoAlpha: 0, ease: 'power3.inOut', duration:0.6},
-        2.8 // 2 seconds after the first animation starts
+        { x: -0, autoAlpha: 0, ease: 'power3.inOut', duration:0.5},
+        2.6 // 2 seconds after the first animation starts
     );
     tl.to(linePosters, { height: 40, ease: 'none', duration: 0.1 }, 1.2);
     tl.to(textPosters, { opacity: 1, ease: 'none', duration: 0.1 }, 1.2);
@@ -301,7 +301,7 @@ ctx = gsap.context(() => {
     }
 
       tl.to(linePosters, { height: 0, ease: 'none', duration: 0.1 }, 3.2);
-      tl.fromTo(website, { opacity: 1 },   { opacity: 0, duration: 0.5 }, 3);
+      tl.fromTo(site, { opacity: 1 },   { opacity: 0, duration: 0.5 }, 3);
         tl.fromTo(logoEl, { autoAlpha: 0 },  { autoAlpha: 1, duration: 0.5 }, 3);
 
     }, panelBoecker.value);
