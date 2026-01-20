@@ -68,26 +68,26 @@
                     </div>
                  
                 </div>
-                <div ref="posterContainer" class="relative col-span-1 w-full h-[70vh] z-50">
+                <div ref="posterContainer" class="relative col-span-1 w-full h-[70vh] z-50 flex items-center justify-center">
                     <img
                         src="/jazzahead/ja22-poster.jpg"
-                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        class="absolute object-contain w-full h-auto poster shadow-lg "
                         alt="Jazzahead 2026 Poster"
                     />
                     <img
                         src="/jazzahead/ja23-poster.jpg"
-                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        class="absolute object-contain w-full h-auto poster shadow-lg "
                         alt="Jazzahead 2026 Poster"
                     />
-                    <img src="/jazzahead/ja24-poster.jpg" alt="Jazzahead 2025 Poster" class="absolute object-contain w-full h-full poster shadow-lg"/>
+                    <img src="/jazzahead/ja24-poster.jpg" alt="Jazzahead 2025 Poster" class="absolute object-contain w-full h-auto poster shadow-lg"/>
                     <img
                         src="/jazzahead/ja25-poster.jpg"
-                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        class="absolute object-contain w-full h-auto poster shadow-lg "
                         alt="Jazzahead 2026 Poster"
                     />
                     <img
                         src="/jazzahead/ja_poster2026.jpg"
-                        class="absolute object-contain w-full h-full poster shadow-lg "
+                        class="absolute object-contain w-full h-auto poster shadow-lg "
                         alt="Jazzahead 2026 Poster"
                     />
                 </div>

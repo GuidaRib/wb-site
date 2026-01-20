@@ -129,8 +129,6 @@ onMounted(() => {
         // Animate the orange SVG circle
         tl.set(orangeEl, { yPercent: -100 });
 
-
-
         tl.fromTo(orangeEl, { yPercent: -100 },  {
             yPercent: 0,
             ease: 'elastic.inOut',
