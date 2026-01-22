@@ -246,7 +246,7 @@ onMounted(() => {
          
                 const posterYears = ['2026','2025','2024','2023','2022'];
                 // start the poster/year sequence later in the timeline
-                const posterSeqStart = 0.8;
+                const posterSeqStart = 1;
                 // fade out the top poster first (26), then update the year to the next value beneath it
                 // ensure initial year shown
                 if (yr) yr.textContent = posterYears[0];

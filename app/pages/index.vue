@@ -92,7 +92,7 @@ onUnmounted(() => {
 <template>
   <main ref="main" class="!overflow-hidden">
     <Panel1 />
-<!--     <Jazzahead /> -->
+    <Jazzahead />  
     <WochenMarkt />
     <Footer />
   </main>
