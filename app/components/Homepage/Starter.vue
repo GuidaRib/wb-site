@@ -3,6 +3,9 @@
     ref="panelBoecker"
     class="relative min-h-screen overflow-hidden bg-white"
     >
+    <div ref="mainContent">
+
+    </div>
 
     </section>
 </template>
