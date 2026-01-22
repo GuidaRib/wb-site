@@ -175,8 +175,7 @@ onMounted(() => {
             duration: 0.2,
         }, 0.6);
 
-         tl.from(split.words, {
-            y: 100,
+         tl.from(splitTitle.words, {
             autoAlpha: 0,
             stagger: {
                 amount: 0.1,
@@ -186,6 +185,16 @@ onMounted(() => {
             duration: 0.08,
             }, 0.7);
 
+        tl.from(splitContent.words, {
+            autoAlpha: 0,
+            stagger: {
+                amount: 0.1,
+                from: "start"
+            },
+            ease: "power2.out",
+            duration: 0.08,
+            }, 0.8);
+    
         tl.to(textEl, { autoAlpha: 1, duration: 0.6 }, 0.8);
 
           if (sp1 && sp2 && sp3 && sp4 && txt) {

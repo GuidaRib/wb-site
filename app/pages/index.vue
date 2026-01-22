@@ -10,6 +10,8 @@ import Panel1 from "~/components/Homepage/Panel1.vue";
 import Jazzahead from "~/components/Homepage/Jazzahead.vue";
 import WochenMarkt from "~/components/Homepage/WochenMarkt.vue";
 import Footer from "~/components/Footer.vue";
+import Boecker from "~/components/Homepage/Boecker.vue";
+import Musikfest from "~/components/Homepage/Musikfest.vue";
 
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, SplitText);
@@ -90,7 +92,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main ref="main" class="!overflow-hidden">
+  <main ref="main" class="!overflow-hidden ">
     <Panel1 />
     <Jazzahead />  
     <WochenMarkt />
