@@ -1,82 +1,66 @@
 <template>
     <section
     ref="panelWochenMarkt"
-    class="relative min-h-screen w-full overflow-hidden "
+    class="relative min-h-screen w-full overflow-hidden relative"
     >
     <!-- Background image panel -->
     <div
-        ref="background"
-
+        ref="mainContent"
+        class="grid grid-cols-1 lg:grid-cols-5 2xl:grid-cols-4 w-full h-full "
      >
-       <img
-        src="/wm/background.png"
-        class="w-full h-full object-cover "
-        alt=""
-        />
-    </div>
-
-    <div ref="orange" class="absolute top-0 left-0 w-full h-full  z-10 ">
-    <img
-     src="/wm/orange.png"
-     class="w-full h-full object-contain object-center"
-     alt=""
-     />
-     
- 
-    </div> 
-   
-
-    <!-- Foreground / overlay panel -->
-    <div
-      
-        class="absolute top-1/2 -translate-y-3/4 left-0 "
-    >
-        <div class="grid grid-cols-4 gap-5 ">
-                 <div ref="leftText" class="text-base max-w-84 font-family-averRegular bg-white ml-auto p-5 h-min">
+     <div class="col-span-1 2xl:col-span-1 flex items-center">
+            <div ref="mainText" class="mainText text-base font-family-averRegular bg-white p-5 2xl:pl-20 h-min ">
                     <p>Die Wochenmärkten in Bremen und Bremerhaven bieten eigenständige Betriebe aus der Region frische, saisonale Produkte von höchster Qualität zum Verkauf an. </p>
 
                     <p>Mittels eines von uns <span class="font-family-averBold">vollumfänglich erneuerten Corporate Designs</span>, begleiten wir die Wochenmärkte Bremen und Bremerhaven <span class="font-family-averBold">medienübergreifend mit Kampagnen und Kommunikationsmedien.</span></p>
-              
             </div>
-            <div class="col-span-2 grid grid-cols-2 justify-between border-2 p-5 border-white text-white gap-20 relative min-h-[75vh]">
-                    <div >
-                        <h2 class="text-5xl font-family-averBold text-white split">MEINE WOCHENMÄRKTE BREMEN BREMERHAVEN</h2>
-          
-                    </div>
-                    <div class="flex flex-col items-end relative">
-                       
-                        <div class="relative pr-4">
-                            <span ref="textClp" class="text-base font-family-averRegular">Aktion</span>
-                             <div ref="line2" class="border-t w-60"></div>
-                             <div ref="smallposterWrap" class="flex gap-10 w-60 flex-col-reverse overflow-visible absolute -right-60">
-                                <img ref="smallposter1" class="absolute smallposter w-60 object-contain h-auto" src="/wm/wm_gluecksrad_2023.png" alt="">
-                                <img ref="smallposter2" class="absolute smallposter w-60 object-contain h-auto" src="/wm/wm-az_2023.png" alt="">
-                                <img ref="smallposter3" class="absolute smallposter w-60 object-contain h-auto" src="/wm/wm_e-auto_2024.png" alt="">
-                                <img ref="smallposter4" class="absolute smallposter w-60 object-contain h-auto" src="/wm/wm_flaggen_2024.png" alt="">
+
+     </div>
+       <div class="col-span-3 2xl:col-span-2 flex items-center ">
+            <div ref="boxContent" class="bg-[url('/wm/wm_background.png')] bg-cover bg-center bg-no-repeat sm:h-[75vh] w-full  p-4">
+                <div ref="whiteBorder" class="flex flex-col lg:flex-row relative border-white border-2 h-full justify-between z-20">
+                <div class="w-full 2xl:w-1/2 h-full  max-h-56 lg:max-h-none relative z-20">
+                    <h2 ref="titleText" class="p-10 titleText text-5xl font-family-averBold text-white split max-w-3xs">MEINE WOCHENMÄRKTE BREMEN BREMERHAVEN</h2>
+                     <div class=" text-white gap-2 flex pl-10 w-1/2 lg:w-full">
+                        <div ref="mobileElement1" class="w-1/2">
+                            <div class="px-4">
+                                <div ref="textClp" class="text-base font-family-averRegular text-right" >SOCIAL Media</div>
+                                <div class="border-b-2 border-white"></div>
                             </div>
-
+                            <img src="/wm/wm_mobile2.png" alt="">
                         </div>
-                  
-
-                                <img ref="computerImage" src="/wm/wm_computer.png" alt="" class="absolute w-[30vw] max-w-screen h-auto bottom-0 right-0 object-contain ">
-            
-                   
+                        <div ref="mobileElement2" class="w-1/2 mt-10 xl:mt-20">
+                            <div class="px-4">
+                                <div ref="textClp" class="text-base font-family-averRegular text-right ">MARKT finder</div>
+                                <div class="border-b-2  border-white"></div>
+                            </div>
+                            <img src="/wm/wm_mobile1.png" alt="">
+                        </div>
                     </div>
-              
-            </div>
-             <div ref="text" class="hidden text text-base font-family-averRegular relative z-0">
-                <div class="absolute bg-purple-300 w-72 -left-20 ">
-                    content
                 </div>
-          
+                <div ref="laptopContainer" class=" lg:w-1/2 h-full relative z-0">
+                        <img src="/wm/wm_computer.png" class="w-full ml-auto sm:absolute  lg:w-[45vw] 2xl:w-[35vw] min-w-[500px] max-w-none bottom-0 2xl:-bottom-5 left-0 -right-40 lg:left-0 xl:left-10"  alt="">
+                </div>
+                </div>
             </div>
         </div>
+
+        <div class="col-span-1 items-center flex " >
+            <div class="relative  flex items-start gap-2 -ml-48  h-[75vh] z-10  w-full"> 
+                <div ref="floatingTextContainer" class="px-4 pt-20 ">
+                    <div ref="floatingText" class="text-base text-white font-family-averRegular">Aktionen</div>
+                    <div class="border-b-2  border-white w-30"></div>
+                </div>
+                <div ref="floatingElements" class="flex flex-col gap-4 items-start absolute left-40 bottom-full -mb-60 w-full">
+                    <img ref="smallElement1" class="h-34 w-auto" src="/wm/wm_gluecksrad_2023.png" alt="">
+                    <img ref="smallElement2" class="h-34 w-auto" src="/wm/wm-az_2023.png" alt="">
+                    <img ref="smallElement3" class="h-34 w-auto" src="/wm/wm_e-auto_2024.png" alt="">
+                    <img ref="smallElement4" class="h-34 w-auto" src="/wm/wm_flaggen_2024.png" alt="">
+                </div>
+            </div>
+        </div>
+      
     </div>
-
-
-
-   <SVGOrange ref="orangeSVG" class="bg-purple-da absolute top-0 left-0 w-full h-full z-0"/>
-
     </section>
 
 </template>
@@ -91,17 +75,19 @@ import SVGOrange from "../SVG/Orange.vue";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const panelWochenMarkt = ref<HTMLElement | null>(null);
-const orangeSVG = ref<InstanceType<typeof SVGOrange> | null>(null);
-const orange = ref<HTMLElement | null>(null);
-const leftText = ref<HTMLElement | null>(null);
-const line2 = ref<HTMLElement | null>(null);
-const textClp = ref<HTMLElement | null>(null);
-const smallposter1 = ref<HTMLElement | null>(null);
-const smallposter2 = ref<HTMLElement | null>(null);
-const smallposter3 = ref<HTMLElement | null>(null);
-const smallposter4 = ref<HTMLElement | null>(null);
-const smallposterWrap = ref<HTMLElement | null>(null);
-const computerImage = ref<HTMLElement | null>(null);
+const boxContent = ref<HTMLElement | null>(null);
+const whiteBorder = ref<HTMLElement | null>(null);
+const laptopContainer = ref<HTMLElement | null>(null);
+const mobileElement1 = ref<HTMLElement | null>(null);
+const mobileElement2 = ref<HTMLElement | null>(null);
+const floatingElements = ref<HTMLElement | null>(null);
+
+const smallElement1 = ref<HTMLElement | null>(null);
+const smallElement2 = ref<HTMLElement | null>(null);
+const smallElement3 = ref<HTMLElement | null>(null);
+const smallElement4 = ref<HTMLElement | null>(null);
+const floatingTextContainer = ref<HTMLElement | null>(null);
+const floatingText = ref<HTMLElement | null>(null);
 
 let ctx: gsap.Context | null = null;
 
@@ -113,8 +99,9 @@ onMounted(() => {
 
         // Pin the section for 4 viewport heights
         const pinDuration = window.innerHeight * 4;
-        const split = new SplitText(".split", { type: "words" });
-        const orangeEl = orange.value;
+        const splitTitle = new SplitText(".titleText", { type: "words" });
+        const splitContent= new SplitText(".mainText", { type: "words" });
+/*         const orangeEl = orange.value;
         const textEl = leftText.value;
         const txt = textClp.value;
         const ln2 = line2.value;
@@ -122,7 +109,7 @@ onMounted(() => {
         const sp2 = smallposter2.value;
         const sp3 = smallposter3.value;
         const sp4 = smallposter4.value;
-        const cpImg = computerImage.value;
+        const cpImg = computerImage.value; */
 
         ScrollTrigger.create({
             trigger: section,
@@ -141,8 +128,361 @@ onMounted(() => {
             }
         });
 
+        tl.set(boxContent.value, { autoAlpha: 0 });
+        tl.set(laptopContainer.value, { autoAlpha: 0 });
+        tl.set(whiteBorder.value, { autoAlpha: 0 });
+        tl.set(mobileElement1.value, { yPercent: 200 });
+        tl.set(mobileElement2.value, { yPercent: 200 });
+        tl.set(floatingElements.value, { y: 0, yPercent: -100 });
+        tl.set(floatingTextContainer.value, { autoAlpha: 0 });
+
+        tl.add("intro", 0);
+
+    tl.fromTo(
+    boxContent.value,
+    { autoAlpha: 0, xPercent: -100, yPercent: 20, skewX: -10 },
+    {
+        autoAlpha: 1,
+        xPercent: 0,
+        yPercent: 0,
+        skewX: 0,
+        ease: "elastic.out(1,0.6)",
+        duration: 1.2
+    },
+    "intro"
+    );
+
+    tl.fromTo(
+    whiteBorder.value,
+    { autoAlpha: 0, scale: 0.8 },
+    {
+        autoAlpha: 1,
+        scale: 1,
+        ease: "elastic.out(1,0.8)",
+        duration: 0.8
+    },
+    "intro+=0.4"
+    );
+
+tl.from(
+  splitTitle.words,
+  {
+    autoAlpha: 0,
+    stagger: { amount: 0.1, from: "start" },
+    ease: "power2.out",
+    duration: 0.14
+  },
+  "intro+=0.8"
+);
+
+tl.from(
+  splitContent.words,
+  {
+    autoAlpha: 0,
+    stagger: { amount: 0.1, from: "start" },
+    ease: "power2.out",
+    duration: 0.08
+  },
+  "intro+=1.2"
+);
+tl.fromTo(
+  mobileElement1.value,
+  { yPercent: 200 },
+  { yPercent: 0, duration: 0.6, ease: "power1.inOut" },
+  "intro+=1.8"
+);
+
+tl.fromTo(
+  mobileElement2.value,
+  { yPercent: 200 },
+  { yPercent: 0, duration: 0.6, ease: "power1.inOut" },
+  "intro+=2.2"
+);
+
+tl.fromTo(
+  mobileElement1.value,
+  { yPercent: 0 },
+  { yPercent: -200, duration: 0.6, ease: "power4.in" },
+  "intro+=4.8"
+);
+
+tl.fromTo(
+  mobileElement2.value,
+  { yPercent: 0 },
+  { yPercent: -300, duration: 0.6, ease: "power4.in" },
+  "intro+=5.2"
+);
+
+
+ const smallElements = [
+            smallElement1.value,
+            smallElement2.value,
+            smallElement3.value,
+            smallElement4.value
+        ];
+        const gap = 40;
+        const smallElementHeight = smallElements[0]?.offsetHeight || 0;
+        const STEP = smallElementHeight + gap;
+        const textLabels = ['Aktionen', 'Anzeigen', 'Fahrzeugbeklebung', 'Werbemittel'];
+
+    tl.add("floating", "3.0");
+
+    tl.fromTo(
+    floatingTextContainer.value,
+    { autoAlpha: 0 },
+    { autoAlpha: 1, duration: 0.3 },
+    "floating"
+    );
+
+    tl.fromTo(
+    floatingElements.value,
+    { yPercent: -100 },
+    {
+        yPercent: 0,
+        duration: 0.5,
+        onStart: () => {
+        floatingText.value.textContent = textLabels[0];
+        }
+    },
+    "floating"
+    );
+
+    tl.addPause("+=0.5");
+
+    tl.fromTo(
+    floatingElements.value,
+    { yPercent: 0 },
+    {
+        y: STEP,
+        yPercent: 0,
+        duration: 0.5,
+        onStart: () => {
+        floatingText.value.textContent = textLabels[1];
+        }
+    }
+    );
+
+    tl.addPause("+=0.5");
+
+    tl.fromTo(
+    floatingElements.value,
+    { y: STEP, yPercent: 0 },
+    {
+        y: STEP * 2,
+        yPercent: 0,
+        duration: 0.5,
+        onStart: () => {
+        floatingText.value.textContent = textLabels[2];
+        }
+    }
+    );
+
+    tl.addPause("+=0.5");
+
+    tl.fromTo(
+    floatingElements.value,
+    { y: STEP * 2, yPercent: 0 },
+    {
+        y: STEP * 3,
+        yPercent: 0,
+        duration: 0.5,
+        onStart: () => {
+        floatingText.value.textContent = textLabels[3];
+        }
+    }
+    );
+
+    tl.fromTo(
+    floatingTextContainer.value,
+    { autoAlpha: 1 },
+    { autoAlpha: 0, duration: 0.3 }
+    );
+
+    tl.fromTo(
+    floatingElements.value,
+    { y: STEP * 3, yPercent: 0 },
+    {
+        y: STEP * 3,
+        yPercent: 200,
+        duration: 0.5,
+        ease: "power1.out"
+    }
+    );
+
+    tl.add("laptop", ">+=0.4");
+
+    tl.fromTo(
+    laptopContainer.value,
+    { autoAlpha: 0, xPercent: 100, skewX: 10 },
+    {
+        autoAlpha: 1,
+        xPercent: 0,
+        skewX: 0,
+        ease: "power2.out",
+        duration: 0.6
+    },
+    "intro+=4"
+    );
+
+    tl.fromTo(
+    laptopContainer.value,
+    { autoAlpha: 1, xPercent: 0, skewX: 0 },
+    {
+        autoAlpha: 0,
+        xPercent: 100,
+        skewX: 10,
+        ease: "power2.in",
+        duration: 0.6
+    },
+    "laptop+=1"
+    );
+
+
+
+     /*    tl.fromTo(boxContent.value, 
+            { autoAlpha: 0 ,xPercent: -100, yPercent: 20, skewX: -10  },
+            { autoAlpha: 1 , xPercent: 0, yPercent: 0, skewX: 0, ease: 'elastic.out(1,0.6)', duration: 0.6 },
+            0
+        );
+        tl.fromTo(whiteBorder.value, 
+            { autoAlpha: 0 , scale: 0.8  },
+            { autoAlpha: 1 , scale: 1, ease: 'elastic.out(1,0.8)', duration: 0.6 },
+            0.1
+        );
+
+        tl.from(splitTitle.words, {
+            autoAlpha: 0,
+            stagger: {
+                amount: 0.1,
+                from: "start"
+            },
+            ease: "power2.out",
+            duration: 0.08,
+            }, 0.2);
+
+        tl.from(splitContent.words, {
+            autoAlpha: 0,
+            stagger: {
+                amount: 0.1,
+                from: "start"
+            },
+            ease: "power2.out",
+            duration: 0.2,
+            }, 0.4);
+            
+        tl.fromTo(laptopContainer.value, 
+            { autoAlpha: 0 , xPercent: 100, skewX: 5  },
+            { autoAlpha: 1 , xPercent: 0,  skewX: 0, ease: 'power2.out', duration: 0.4 },
+            2.6);
+
+        tl.fromTo(mobileElement1.value, 
+            { autoAlpha: 1 , yPercent: 200  },
+            { autoAlpha: 1 , yPercent: 0, ease: 'power1.inOut', duration: 0.6 },
+            0.3);   
+        tl.fromTo(mobileElement2.value, 
+            { autoAlpha: 1 , yPercent: 200  },
+            { autoAlpha: 1 , yPercent: 0, ease: 'power1.inOut', duration: 0.6 },
+            0.8);
+        
+        tl.fromTo(mobileElement1.value, 
+            { autoAlpha: 1 , yPercent: 0  },
+            { autoAlpha: 1 , yPercent: -200, ease: 'power1.inOut', duration: 0.5 },
+            2);   
+        tl.fromTo(mobileElement2.value, 
+            { autoAlpha: 1 , yPercent: 0  },
+            { autoAlpha: 1 , yPercent: -300, ease: 'power1.inOut', duration: 0.5 },
+            2.6);
+        tl.fromTo(laptopContainer.value, 
+            { autoAlpha: 1 , xPercent: 0  },
+            { autoAlpha: 0 , xPercent: 100, ease: 'power2.in', duration: 0.4 },
+          4  );
+        
+        const smallElements = [
+            smallElement1.value,
+            smallElement2.value,
+            smallElement3.value,
+            smallElement4.value
+        ];
+        const gap = 40;
+        const smallElementHeight = smallElements[0]?.offsetHeight || 0;
+        const STEP = smallElementHeight + gap;
+        const textLabels = ['Aktionen', 'Anzeigen', 'Fahrzeugbeklebung', 'Werbemittel'];
+                tl.fromTo(floatingTextContainer.value, 
+                            { autoAlpha: 0 },
+                            { autoAlpha: 1, duration: 0.3 }, 1.5);
+                tl.fromTo(
+                    floatingElements.value,
+                    { y: 0, yPercent: -100 },
+                    {
+                        yPercent: 0,
+                        y: 0,
+                        duration: 0.5,
+                        onUpdate: () => {
+                            if (floatingTextContainer.value) floatingText.value.textContent = textLabels[0];
+                           
+                        },
+                    }, 1
+                )
+                .addPause("+=0.5")
+
+                .fromTo(
+                    floatingElements.value,
+                    { y: 0, yPercent: 0 },
+                    {
+                        y: STEP,
+                        duration: 0.5,
+                        onUpdate: () => {
+                            if (floatingText.value) floatingText.value.textContent = textLabels[1];
+                        }
+                    }
+                )
+                .addPause("+=0.5")
+
+                .fromTo(
+                    floatingElements.value,
+                    { y: STEP },
+                    {
+                        y: STEP * 2,
+                        duration: 0.5,
+                        onUpdate: () => {
+                            if (floatingText.value) floatingText.value.textContent = textLabels[2];
+                        }
+                    }
+                )
+                .addPause("+=0.5")
+
+                .fromTo(
+                    floatingElements.value,
+                    { y: STEP * 2 },
+                    {
+                        y: STEP * 3,
+                        duration: 0.5,
+                        onUpdate: () => {
+                            if (floatingText.value) floatingText.value.textContent = textLabels[3];
+                        },
+                    }
+                )
+                .fromTo(floatingTextContainer.value, 
+                            { autoAlpha: 1 },
+                            { autoAlpha: 0, duration: 0.3 })
+
+                .fromTo(
+                floatingElements.value,
+                    { y: STEP * 3, yPercente: 0 },
+                    {
+                        y: STEP * 3,
+                        yPercent: 200,
+                        ease: 'power1.out',
+                        duration: 0.5,
+                        onUpdate: () => {
+                            if (floatingText.value) floatingText.value.textContent = textLabels[3];
+                        },
+                    }
+                );
+ */
+
         // Animate the orange SVG circle
-        tl.set(orangeEl, { yPercent: -100 });
+      /*  tl.set(orangeEl, { yPercent: -100 });
         tl.set(textEl, { autoAlpha: 0 });
 
         tl.set(ln2, { height: 0 });
@@ -344,73 +684,8 @@ onMounted(() => {
             3
         );
     
-        
+        */
 
-        /* // Initial states
-        tl.set(bg, { xPercent: 0, opacity: 0 });
-        // set fg to match the from state so there are no jumps
-        tl.set(fg, { opacity: 0, scale: 0.6, y: 40 });
-        tl.set(ln, { height: 0 });
-        tl.set(pCn, { opacity: 0, y: 0 });
-        // ensure wrapper starts off-screen (matches Tailwind) and posters hidden
-        if (spWrap) tl.set(spWrap, { xPercent: -100 });
-        tl.set([sp1, sp2, sp3], { autoAlpha: 0, y: 12 });
-        tl.set(txt, { opacity: 0 });
-        tl.set(ln2, { height: 0 });
-            
-
-            // Explicit durations so the scrubbed timeline maps clearly to scroll
-            const fadeDur = 0.08; // bg fade duration (relative timeline units)
-            const slideDur = 0.13; // bg slide duration
-            const fgDur = 0.05;   // foreground fade duration
-
-            // 1) bg fades in
-            tl.to(bg, { opacity: 1, xPercent: -100,ease: 'none', duration: fadeDur }, 0);
-            // 2) bg slides left after fade completes
-            //tl.to(bg, { , ease: 'none', duration: slideDur }, fadeDur);
-                    // 3) foreground "bounce in" after slide completes
-                    // Use a fromTo so we get a bouncy entrance while preserving final y offset
-                    tl.fromTo(fg,
-                        { opacity: 0, y: 40, scale: 0.6 },
-                        { opacity: 1, y: -80, scale: 1, ease: 'back.out(0.8)', duration: 0.4 },
-                        fadeDur
-                    );
-            // 4) poster pops in shortly after foreground 
-            tl.from('.poster', { opacity: 0, y: 40, duration: 0.1 }, fadeDur );
-            // 5) text fades in
-            //tl.to(txt, { opacity: 1, ease: 'none', duration: fgDur }, fadeDur * 2);
-            // Split text animation
-        
-            tl.from(split.words, {
-                y: 100,
-                autoAlpha: 0,
-                stagger: {
-                    amount: 0.1,
-                    from: "start"
-                },
-                ease: "power2.out",
-                duration: 0.08,
-                }, fadeDur * 2);
-
-            // 6) line grows
-            tl.to(ln, { height: 128, ease: 'none', duration: 0.1 }, fadeDur * 3);
-            // 7) posterClubnight pops in
-            tl.from(pCn, { opacity: 0, y: 0, duration: 0.1 }, fadeDur * 4);
-            // 7) line2 grows
-            tl.to(ln2, { height: 40, ease: 'none', duration: 0.1 }, fadeDur * 4);
-            // 7) textClp fades in
-            tl.to(txt, { opacity: 1,
-                ease: 'none', duration: 0.1 
-                }, fadeDur * 4);
-            
-                    // 8) bring wrapper in, then fade/raise posters sequentially
-                    if (spWrap) {
-                        tl.to(spWrap, { xPercent: 0, ease: 'power2.out', duration: 0.35 }, fadeDur * 4);
-                    }
-                    tl.fromTo(sp1, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, fadeDur * 4 + 0.05)
-                        .fromTo(sp2, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, '+=0.01')
-                        .fromTo(sp3, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, ease: 'power3.out', duration: 0.35 }, '+=0.01');
-    */
   }, panelWochenMarkt.value);
 });
 

@@ -45,14 +45,33 @@
 }
 
 @layer base {
-    body {
+    html {
     font-family: 'SinewsSans-Light', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     
     p {
         @apply mb-4;
     }
 
+    /* Larger base font size for large screens */
+    @media (min-width: 1024px) {
+        font-size: 18px;
+
+    }
+        /* 3xl: Full HD (FHD) 1920x1080 */
+        @media (min-width: 1920px) {
+            font-size: 20px;
+
+        }
+        /* 4xl: Quad HD (QHD/2K) 2560x1440 */
+        @media (min-width: 2560px) {
+            font-size: 24px;
+
+        }
+        /* 5xl: Ultra HD (UHD/4K) 3840x2160 */
+        @media (min-width: 3840px) {
+            font-size: 28px;
+        }
 }
 
 
