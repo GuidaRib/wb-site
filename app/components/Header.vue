@@ -1,22 +1,39 @@
 <template>
   <header class="fixed z-[9999] w-full p-10">
-    <nav  role="navigation" class="">
+    <nav  role="navigation" class="headerMenu flex justify-between gap-40">
       <!-- Desktop menu -->
-        <ul class="hidden md:flex justify-end items-center gap-20 ">
+        <ul class="hidden md:flex justify-end items-center gap-20 text-white text-lg font-semibold">
+          <li class="bg-black/60 backdrop-blur-sm hover:bg-accent hover:text-black">
+            <NuxtLink :to="{ path: '/', hash: '#ueber-uns' }" class="anchor px-3  block text-nowrap">Über Uns</NuxtLink>
+          </li>
+           <li class="bg-black/60 backdrop-blur-sm hover:bg-accent hover:text-black">
+            <NuxtLink :to="{ path: '/', hash: '#projekt' }" class="anchor px-3 block text-nowrap">Projekt</NuxtLink>
+          </li>
+            <li class="bg-black/60 backdrop-blur-sm hover:bg-accent hover:text-black">
+            <NuxtLink :to="{ path: '/', hash: '#leistungen' }" class="anchor px-3 block">Leistungen</NuxtLink>
+          </li>
+           <li class="bg-black/60 backdrop-blur-sm hover:bg-accent hover:text-black">
+            <NuxtLink :to="{ path: '/', hash: '#team' }" class="anchor px-3 block">Team</NuxtLink>
+          </li>
+          <li class="backdrop-blur-sm bg-accent text-black hover:bg-black hover:text-white">
+            <NuxtLink :to="{ path: '/' }" class="anchor px-6 py-2 block text-nowrap">Sag Hello</NuxtLink>
+          </li>
+        </ul>
+        <ul class="hidden md:flex justify-end items-center gap-20">
           <li>
-            <NuxtLink :to="{ path: '/', hash: '#ueber-uns' }" class="anchor hover:underline">Über Uns</NuxtLink>
+            <button class="px-6 py-2 backdrop-blur-sm text-black bg-accent hover:bg-black hover:text-white font-semibold text-lg  transition-colors cursor-pointer">
+              green
+            </button>
           </li>
           <li>
-            <NuxtLink :to="{ path: '/', hash: '#projekt' }" class="anchor hover:underline">Projekt</NuxtLink>
+            <button class="px-6 py-2 backdrop-blur-sm text-black bg-accent-yellow hover:bg-black hover:text-white font-semibold text-lg  transition-colors cursor-pointer">
+              yellow
+            </button>
           </li>
           <li>
-            <NuxtLink :to="{ path: '/', hash: '#leistungen' }" class="anchor hover:underline">Leistungen</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink :to="{ path: '/', hash: '#team' }" class="anchor hover:underline">Team</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink :to="{ path: '/' }" class="anchor hover:underline bg-accent hover:bg-accent-dark hover:text-white p-2">Sag Hello</NuxtLink>
+            <button class="px-6 py-2 backdrop-blur-sm text-black bg-accent-pink hover:bg-black hover:text-white font-semibold text-lg  transition-colors cursor-pointer">
+              pink
+            </button>
           </li>
         </ul>
 

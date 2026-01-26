@@ -33,7 +33,9 @@
 
 @theme {
  
-    --color-accent: rgba(255, 237, 53, 1); 
+    --color-accent: rgba(0, 255, 119, 1); 
+    --color-accent-yellow: rgba(255, 255, 0, 1);
+    --color-accent-pink: rgba(255, 133, 247, 1);
     --color-accent-dark: rgba(78, 8, 143, 1); 
     --font-family-serif: 'SinewsSans-Light', serif;
     --font-family-sineMedium: 'SinewsSans-Medium', sans-serif;

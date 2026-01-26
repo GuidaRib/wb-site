@@ -12,7 +12,7 @@ import WochenMarkt from "~/components/Homepage/WochenMarkt.vue";
 import Footer from "~/components/Footer.vue";
 import Boecker from "~/components/Homepage/Boecker.vue";
 import Musikfest from "~/components/Homepage/Musikfest.vue";
-
+import Panel6 from "~/components/Homepage/Panel6.vue";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, SplitText);
 
@@ -36,7 +36,7 @@ onMounted(() => {
       smoother = ScrollSmoother.create({
         wrapper: mainEl.parentElement || document.body,
         content: mainEl,
-        smooth: 2,
+        smooth: 10,
         effects: true,
       });
     }
@@ -94,7 +94,8 @@ onUnmounted(() => {
 <template>
   <main ref="main" class="!overflow-hidden ">
     <Panel1 />
-<!--     <Jazzahead />   -->
+
+    <Jazzahead />  
     <WochenMarkt />
     <Footer />
   </main>
