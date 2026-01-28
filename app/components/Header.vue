@@ -1,9 +1,9 @@
 <template>
-  <header class="fixed z-[9999] w-full p-10">
+  <header class="fixed z-[9999] w-full py-5 px-10">
     <nav  role="navigation" class="headerMenu flex justify-between gap-40">
       <!-- Desktop menu -->
         <ul class="hidden md:flex justify-end items-center gap-20 text-white text-lg font-semibold">
-          <li class="bg-black/60 backdrop-blur-sm hover:bg-accent hover:text-black">
+          <li class="bg-black/60 backdrop-invert hover:bg-accent hover:text-black">
             <NuxtLink :to="{ path: '/', hash: '#ueber-uns' }" class="anchor px-3  block text-nowrap">Über Uns</NuxtLink>
           </li>
            <li class="bg-black/60 backdrop-blur-sm hover:bg-accent hover:text-black">
