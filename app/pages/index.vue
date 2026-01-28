@@ -36,7 +36,7 @@ onMounted(() => {
       smoother = ScrollSmoother.create({
         wrapper: mainEl.parentElement || document.body,
         content: mainEl,
-        smooth: 10,
+        smooth: 5,
         effects: true,
       });
     }
