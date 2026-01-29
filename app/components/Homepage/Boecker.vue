@@ -24,7 +24,7 @@
                 <div class="relative overflow-hidden "> 
                     <img src="/boecker/bo_laptop_nn.png" alt="" class="relative z-20 h-auto w-fulll mx-auto object-contain">
                    
-                        <img ref="website" src="/boecker/bo_website.jpg" class="w-[78vw] lg:w-[39vw] 2xl:w-[47vw] h-auto absolute top-0 left-1/2 -translate-x-1/2 z-10  " alt=""> 
+                        <img ref="website" src="/boecker/bo_website.jpg" class="w-[78vw] lg:w-[47vw] 2xl:w-[47vw] h-auto absolute top-0 left-1/2 -translate-x-1/2 z-10  " alt=""> 
 
                     <div ref="logo" class="w-[78vw] lg:w-[39vw] 2xl:w-[47vw] h-auto absolute top-1/2 left-1/2 -translate-1/2  flex items-center justify-center z-40 pb-10"> 
                             <img src="/boecker/bo_logo_n.png" class="object-contain" alt="">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-         <img ref="graphics" src="/boecker/bo_graphics.png" alt="" class="absolute w-1/2 h-auto top-1/2 left-0 -translate-y-1/2"> 
+         <img ref="graphics" src="/boecker/bo_graphics.png" alt="" class="absolute w-1/2 h-auto top-10 2xl:top-1/2  left-1/4 2xl:left-0 -translate-y-1/2 z-40 2xl:z-0"> 
         </div>
     </section>
 </template>
