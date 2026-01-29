@@ -62,7 +62,7 @@
     }
         /* 3xl: Full HD (FHD) 1920x1080 */
         @media (min-width: 1920px) {
-            font-size: 20px;
+            font-size: 18px;
 
         }
         /* 4xl: Quad HD (QHD/2K) 2560x1440 */

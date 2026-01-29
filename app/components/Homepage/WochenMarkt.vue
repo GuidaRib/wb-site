@@ -1,84 +1,68 @@
 <template>
     <section
     ref="panelWochenMarkt"
-    class="relative min-h-screen w-full overflow-hidden relative"
+    class="min-h-screen w-full overflow-hidden relative"
     >
-    <!-- Background image panel -->
-    <div
-        ref="mainContent"
-        class="grid grid-cols-1 lg:grid-cols-5 2xl:grid-cols-4 w-full h-full "
-     >
-     <div class="col-span-1 2xl:col-span-1 flex items-center">
-            <div ref="mainText" class="mainText text-base font-family-averRegular bg-white p-5 2xl:pl-20 h-min ">
-                    <p>Die Wochenmärkten in Bremen und Bremerhaven bieten eigenständige Betriebe aus der Region frische, saisonale Produkte von höchster Qualität zum Verkauf an. </p>
+        <!-- Background image panel -->
+        <div
+            ref="mainContent"
+            class="grid grid-cols-1 lg:grid-cols-5 2xl:grid-cols-4 w-full h-full "
+        >
+        <div class="col-span-1 2xl:col-span-1 flex items-center">
+                <div ref="mainText" class="mainText text-base font-family-averRegular bg-white p-5 2xl:pl-20 h-min ">
+                        <p>Die Wochenmärkten in Bremen und Bremerhaven bieten eigenständige Betriebe aus der Region frische, saisonale Produkte von höchster Qualität zum Verkauf an. </p>
 
-                    <p>Mittels eines von uns <span class="font-family-averBold">vollumfänglich erneuerten Corporate Designs</span>, begleiten wir die Wochenmärkte Bremen und Bremerhaven <span class="font-family-averBold">medienübergreifend mit Kampagnen und Kommunikationsmedien.</span></p>
-            </div>
-
-     </div>
-       <div class="col-span-3 2xl:col-span-2 flex items-center relative z-0 ">
-            <div ref="boxContent" class="bg-[url('/wm/wm_background.png')] bg-cover bg-center bg-no-repeat sm:h-[75vh] w-full  p-4">
-                <div ref="whiteBorder" class="flex flex-col lg:flex-row relative border-white border-2 h-full justify-between z-20">
-                    <div class="w-full 2xl:w-1/2 h-full  max-h-56 lg:max-h-none relative z-20">
-                        <h2 ref="titleText" class="p-10 titleText text-5xl font-family-averBold text-white split max-w-3xs">MEINE WOCHENMÄRKTE BREMEN BREMERHAVEN</h2>
-                        <div class=" text-white gap-2 flex pl-10 w-1/2 lg:w-full">
-                            <div ref="mobileElement1" class="w-1/2">
-                                <div class="px-4">
-                                    <div ref="textClp" class="text-base font-family-averRegular text-right" >SOCIAL Media</div>
-                                    <div class="border-b-2 border-white"></div>
-                                </div>
-                                <img src="/wm/wm_mobile2.png" alt="">
-                            </div>
-                            <div ref="mobileElement2" class="w-1/2 mt-10 xl:mt-20">
-                                <div class="px-4">
-                                    <div ref="textClp" class="text-base font-family-averRegular text-right ">MARKT finder</div>
-                                    <div class="border-b-2  border-white"></div>
-                                </div>
-                                <img src="/wm/wm_mobile1.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div ref="laptopContainer" class=" lg:w-1/2 h-full ">
-                            <img src="/wm/wm_computer.png" class="w-full ml-auto sm:absolute  lg:w-[45vw] 2xl:w-[35vw] min-w-[500px] max-w-none bottom-0 2xl:-bottom-5 left-0 -right-40 lg:left-0 xl:left-10 relative z-20"  alt="">
-                    </div>
-                    <div ref="logoWM" class="absolute bottom-4 right-4 lg:right-10 z-30 ">
-                        <img src="/wm/wm_logo.png" alt="Wochenmarkt Logo" >
-
-                    </div>
+                        <p>Mittels eines von uns <span class="font-family-averBold">vollumfänglich erneuerten Corporate Designs</span>, begleiten wir die Wochenmärkte Bremen und Bremerhaven <span class="font-family-averBold">medienübergreifend mit Kampagnen und Kommunikationsmedien.</span></p>
                 </div>
-                <div class="absolute w-full left-full top-0 col-span-1 items-center flex z-10 " >
-                    <div class="relative flex items-start gap-2 -ml-50  h-[75vh] z-0  w-full "> 
-                        <div ref="floatingTextContainer" class="px-4 pt-20 ">
-                            <div ref="floatingText" class="text-base text-white font-family-averRegular">Aktionen</div>
-                            <div class="border-b-2  border-white w-34"></div>
+
+        </div>
+        <div class="col-span-3 2xl:col-span-2 flex items-center relative z-0 ">
+                <div ref="boxContent" class="bg-[url('/wm/wm_background.png')] bg-cover bg-center bg-no-repeat sm:h-[75vh] w-full  p-4">
+                    <div ref="whiteBorder" class="flex flex-col lg:flex-row relative border-white border-2 h-full justify-between z-20">
+                        <div class="w-full 2xl:w-1/2 h-full  max-h-56 lg:max-h-none relative z-20">
+                            <h2 ref="titleText" class="p-10 titleText text-5xl font-family-averBold text-white split max-w-3xs">MEINE WOCHENMÄRKTE BREMEN BREMERHAVEN</h2>
+                            <div class=" text-white gap-2 flex pl-10 w-1/2 lg:w-full">
+                                <div ref="mobileElement1" class="w-1/2">
+                                    <div class="px-4">
+                                        <div ref="textClp" class="text-base font-family-averRegular text-right" >SOCIAL Media</div>
+                                        <div class="border-b-2 border-white"></div>
+                                    </div>
+                                    <img src="/wm/wm_mobile2.png" alt="">
+                                </div>
+                                <div ref="mobileElement2" class="w-1/2 mt-10 xl:mt-20">
+                                    <div class="px-4">
+                                        <div ref="textClp" class="text-base font-family-averRegular text-right ">MARKT finder</div>
+                                        <div class="border-b-2  border-white"></div>
+                                    </div>
+                                    <img src="/wm/wm_mobile1.png" alt="">
+                                </div>
+                            </div>
                         </div>
-                        <div ref="floatingElements" class="flex flex-col gap-4 items-start absolute left-42 bottom-full -mb-60 w-full">
-                            <img ref="smallElement1" class="h-34 w-auto" src="/wm/wm_gluecksrad_2023.png" alt="">
-                            <img ref="smallElement2" class="h-34 w-auto" src="/wm/wm-az_2023.png" alt="">
-                            <img ref="smallElement3" class="h-34 w-auto" src="/wm/wm_e-auto_2024.png" alt="">
-                            <img ref="smallElement4" class="h-34 w-auto" src="/wm/wm_flaggen_2024.png" alt="">
+                        <div ref="laptopContainer" class=" lg:w-1/2 h-full ">
+                                <img src="/wm/wm_computer.png" class="w-full ml-auto sm:absolute  lg:w-[45vw] 2xl:w-[35vw] min-w-[500px] max-w-none bottom-0 2xl:-bottom-5 left-0 -right-40 lg:left-0 xl:left-10 relative z-20"  alt="">
+                        </div>
+                        <div ref="logoWM" class="absolute bottom-4 right-4 lg:right-10 z-30 ">
+                            <img src="/wm/wm_logo.png" alt="Wochenmarkt Logo" >
+
+                        </div>
+                    </div>
+                    <div class="absolute w-full left-full top-0 col-span-1 items-center flex z-10 " >
+                        <div class="relative flex items-start gap-2 -ml-50  h-[75vh] z-0  w-full "> 
+                            <div ref="floatingTextContainer" class="px-4 pt-20 ">
+                                <div ref="floatingText" class="text-base text-white font-family-averRegular">Aktionen</div>
+                                <div class="border-b-2  border-white w-34"></div>
+                            </div>
+                            <div ref="floatingElements" class="flex flex-col gap-4 items-start absolute left-42 bottom-full -mb-60 w-full">
+                                <img ref="smallElement1" class="h-34 w-auto" src="/wm/wm_gluecksrad_2023.png" alt="">
+                                <img ref="smallElement2" class="h-34 w-auto" src="/wm/wm-az_2023.png" alt="">
+                                <img ref="smallElement3" class="h-34 w-auto" src="/wm/wm_e-auto_2024.png" alt="">
+                                <img ref="smallElement4" class="h-34 w-auto" src="/wm/wm_flaggen_2024.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-   <!--      <div class="col-span-1 items-center flex relative z-0" >
-            <div class="relative  flex items-start gap-2 -ml-48  h-[75vh] z-0  w-full"> 
-                <div ref="floatingTextContainer" class="px-4 pt-20 ">
-                    <div ref="floatingText" class="text-base text-white font-family-averRegular">Aktionen</div>
-                    <div class="border-b-2  border-white w-30"></div>
-                </div>
-                <div ref="floatingElements" class="flex flex-col gap-4 items-start absolute left-40 bottom-full -mb-60 w-full">
-                    <img ref="smallElement1" class="h-34 w-auto" src="/wm/wm_gluecksrad_2023.png" alt="">
-                    <img ref="smallElement2" class="h-34 w-auto" src="/wm/wm-az_2023.png" alt="">
-                    <img ref="smallElement3" class="h-34 w-auto" src="/wm/wm_e-auto_2024.png" alt="">
-                    <img ref="smallElement4" class="h-34 w-auto" src="/wm/wm_flaggen_2024.png" alt="">
-                </div>
-            </div>
-        </div> -->
-      
-    </div>
     </section>
 
 </template>
