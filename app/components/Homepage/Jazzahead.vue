@@ -297,7 +297,6 @@ onMounted(() => {
     ];
     const gap = 40;
     const smallElementWidth = smallElements[0]?.offsetWidth || 0;
-    console.log('Small Element Width:', smallElementWidth);
     const STEP = smallElementWidth + gap;
     const textLabels = ['CLP', 'Grossfläche', 'Merchandise', 'Programheft'];
 
