@@ -7,6 +7,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 
 import Panel1 from "~/components/Homepage/Panel1.vue";
+import Panel2 from "~/components/Homepage/Panel2.vue";
 import Jazzahead from "~/components/Homepage/Jazzahead.vue";
 import WochenMarkt from "~/components/Homepage/WochenMarkt.vue";
 import Footer from "~/components/Footer.vue";
@@ -94,6 +95,7 @@ onUnmounted(() => {
 <template>
   <main ref="main" class="!overflow-hidden ">
     <Panel1 />
+    <Panel2 />
     <Jazzahead />  
     <WochenMarkt />
     <Boecker />
